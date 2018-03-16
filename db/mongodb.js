@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/Restaurants_Reviews')
 
-// mongoose.plugin(autoIncrement.mongoosePlugin);
-
 const restaurantSchema = mongoose.Schema({
   restaurantId: Number,
   restaurantName: String,
@@ -15,31 +13,11 @@ const restaurantSchema = mongoose.Schema({
   rating: Number,
   review: [],
 });
-  // restaurantId: Number,
-  // restaurantName: String,
-  // restaurantReviews: [
-  //   {
-  //     username: String,
-  //     city: String,
-  //     dinedDate: String,
-  //     rating: Number,
-  //     review: String,
-  //   },
-  // ],
-// const restaurantSchema = mongoose.Schema({
-//       id: Number,
-//       username: String,
-//       city: String,
-//       dinedDate: String,
-//       rating: Number,
-//       review: String
-//   });
-
 
 const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
 function insertOne(restaurant, callback) {
-  Restaurant.create(restaurant, callback).exec();
+  Restaurant.create(restaurant, callback);
 }
 
 function findByRestaurantId(id, callback) {
